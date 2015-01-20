@@ -1,0 +1,30 @@
+/* Empty. Add your own CSS if you like */
+.img-menu-profile{
+    top: 5px !important;
+    left: 16px !important;
+}
+
+.menu-account{
+    height: 90px !important;
+}
+
+.menu-after-account{
+    padding-top: 45px !important;
+    background-color: #387ef5 ;
+}
+
+.link-account{
+    position: absolute;
+    bottom: 16px;
+    font-size: 16px;
+    left: 16px;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.bg-menu>a{
+    color: #fff !important;
+    background-color: #387ef5 !important;
+
+}
