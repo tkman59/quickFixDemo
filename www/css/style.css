@@ -26,5 +26,10 @@
 .bg-menu>a{
     color: #fff !important;
     background-color: #387ef5 !important;
+}
 
+.size-logo{
+    width: 100px;
+    padding-top: 5px;
+    float: left;
 }
