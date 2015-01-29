@@ -4603,49 +4603,6 @@ IonicModule
 (function() {
   var templatesToCache = [];
 
-/**
- * @ngdoc service
- * @name $ionicTemplateCache
- * @module ionic
- * @description A service that preemptively caches template files to eliminate transition flicker and boost performance.
- * @usage
- * State templates are cached automatically, but you can optionally cache other templates.
- *
- * ```js
- * $ionicTemplateCache('myNgIncludeTemplate.html');
- * ```
- *
- * Optionally disable all preemptive caching with the `$ionicConfigProvider` or individual states by setting `prefetchTemplate`
- * in the `$state` definition
- *
- * ```js
- *   angular.module('myApp', ['ionic'])
- *   .config(function($stateProvider, $ionicConfigProvider) {
- *
- *     // disable preemptive template caching globally
- *     $ionicConfigProvider.templates.prefetch(false);
- *
- *     // disable individual states
- *     $stateProvider
- *       .state('tabs', {
- *         url: "/tab",
- *         abstract: true,
- *         prefetchTemplate: false,
- *         templateUrl: "tabs-templates/tabs.html"
- *       })
- *       .state('tabs.home', {
- *         url: "/home",
- *         views: {
- *           'home-tab': {
- *             prefetchTemplate: false,
- *             templateUrl: "tabs-templates/home.html",
- *             controller: 'HomeTabCtrl'
- *           }
- *         }
- *       });
- *   });
- * ```
- */
 IonicModule
 .factory('$ionicTemplateCache', [
 '$http',
