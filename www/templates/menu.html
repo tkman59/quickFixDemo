@@ -1,4 +1,4 @@
-<ion-side-menus enable-menu-with-back-views="true">
+<ion-side-menus enable-menu-with-back-views="true" class="has-tabs-top">
 
   <!-- order by element on header
   http://stackoverflow.com/questions/23317092/how-to-add-a-logo-to-header-bar-in-ionic-->
@@ -10,11 +10,15 @@
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
-          <img class="size-logo" src="img/images.png">
+          <img ng-show="!toSearch" class="size-logo" src="img/images.png">
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <button class="button button-icon ion-android-search"></button>
+        <button class="button button-icon ion-android-search" ng-click="toSearch=true" ng-show="!toSearch"></button>
+        <label class="item item-input input-search" ng-show="toSearch">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-blur="toSearch=false">
+        </label>
       </ion-nav-buttons>
 
       <ion-nav-buttons side="secondary">

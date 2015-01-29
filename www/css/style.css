@@ -32,3 +32,8 @@
     width: 100px;
     padding-top: 5px;
 }
+
+.input-search{
+    background-color: transparent;
+    border: none;
+}

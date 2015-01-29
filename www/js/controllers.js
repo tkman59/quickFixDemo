@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
     })
 
-.controller('PlaylistsCtrl', function($scope,$localStorage,$log) {
+.controller('SearchCtrl', function($scope,$localStorage,$log) {
       $scope.isLogin=$localStorage.get('isLogin');
 
       $scope.changeIsLogin = function (){
