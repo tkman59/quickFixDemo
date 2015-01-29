@@ -5,7 +5,6 @@ angular.module('starter.controllers', [])
       $localStorage.set('isLogin','true');
 
       $scope.isLoginFunction= function(){
-        $log.info("plop="+$localStorage.get('isLogin'));
         if($localStorage.get('isLogin')=='true'){
           return true;
         }else{
