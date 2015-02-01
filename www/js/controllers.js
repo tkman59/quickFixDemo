@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
     })
 
-.controller('SearchCtrl', function($scope,$localStorage,$log) {
+.controller('SearchCtrl', function($scope,$localStorage,$log,$translate,Categories) {
       $scope.isLogin=$localStorage.get('isLogin');
 
       $scope.changeIsLogin = function (){
@@ -28,5 +28,8 @@ angular.module('starter.controllers', [])
 
         $log.info($localStorage.get('isLogin'));
       };
+        $scope.lang=$translate.use();
+
+        $scope.categories = Categories.all();
 })
 

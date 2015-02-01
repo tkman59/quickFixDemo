@@ -1,4 +1,119 @@
 angular.module('starter.services', [])
+    .factory('Categories', function() {
+      var categories = [
+        {
+          id:0,
+          weight:10,
+          fr:{name:'Bien-être'},
+          en:{name:'Wellness'}
+
+        },
+        {
+          id:1,
+          weight:20,
+          fr:{name:'Beauté'},
+          en:{name:'Beauty'},
+          subCategories:[
+            {
+              id:0,
+              weight:10,
+              fr:{name:'Coiffure'},
+              en:{name:'Hairstyle'},
+              color:'#F44336'
+            },
+            {
+              id:1,
+              weight:20,
+              fr:{name:'Epilation'},
+              en:{name:'Waxing'},
+              color:'#E91E63',
+              services:[
+                {
+                  id:0,
+                  weight:10,
+                  fr:{name:'1/2 jambes',info:'blblagla'},
+                  en:{name:'1/2 legs',info:'blblagla'}
+                },
+                {
+                  id:1,
+                  weight:20,
+                  fr:{name:'Jambes complètes',info:''},
+                  en:{name:'Full legs',info:''}
+                },
+                {
+                  id:2,
+                  weight:30,
+                  fr:{name:'Aisselles',info:''},
+                  en:{name:'Armpit',info:''}
+                },
+                {
+                  id: 3,
+                  weight: 40,
+                  fr: {name: 'Maillot brésilien', info: 'blalblzlzkhfgjzshfg fzzrfzf'},
+                  en: {name: 'Brazilian bikini', info: 'sfsjfhjs shjfghjsgfjhhsf'}
+                },
+                {
+                  id:4,
+                  weight:50,
+                  fr:{name:'Maillot classique',info:''},
+                  en:{name:'Classic bikini',info:''}
+                }
+              ]
+            },
+            {
+              id:2,
+              weight:30,
+              fr:{name:'Massage'},
+              en:{name:'Massage'},
+              color:'#9C27B0'
+            },
+            {
+              id:2,
+              weight:40,
+              fr:{name:'Manucure'},
+              en:{name:'Manicure'},
+              color:'#2196F3'
+            },
+            {
+              id:2,
+              weight:50,
+              fr:{name:'Pédicure'},
+              en:{name:'Chirodist'},
+              color:'#009688'
+            },
+            {
+              id:2,
+              weight:60,
+              fr:{name:'Maquillage'},
+              en:{name:'Makeup'},
+              color:'#CDDC39'
+            }
+          ]
+        },
+        {
+          id:2,
+          weight:30,
+          fr:{name:'Santé'},
+          en:{name:'Health'}
+        }
+
+      ];
+
+      return {
+        all: function() {
+          return categories;
+        },
+        get: function(categoryId) {
+          for (var i = 0; i < chats.length; i++) {
+            if (categories[i].id === parseInt(categoryId)) {
+              return categories[i];
+            }
+          }
+          return null;
+        }
+      }
+    })
+
 
 
 .factory('Chats', function() {
