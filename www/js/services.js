@@ -68,21 +68,21 @@ angular.module('starter.services', [])
               color:'#9C27B0'
             },
             {
-              id:2,
+              id:3,
               weight:40,
               fr:{name:'Manucure'},
               en:{name:'Manicure'},
               color:'#2196F3'
             },
             {
-              id:2,
+              id:4,
               weight:50,
               fr:{name:'Pédicure'},
               en:{name:'Chirodist'},
               color:'#009688'
             },
             {
-              id:2,
+              id:5,
               weight:60,
               fr:{name:'Maquillage'},
               en:{name:'Makeup'},
@@ -102,9 +102,10 @@ angular.module('starter.services', [])
       return {
         all: function() {
           return categories;
+          //return _.sortBy(categories, function(category){return category.weight});
         },
         get: function(categoryId) {
-          for (var i = 0; i < chats.length; i++) {
+          for (var i = 0; i < categories.length; i++) {
             if (categories[i].id === parseInt(categoryId)) {
               return categories[i];
             }

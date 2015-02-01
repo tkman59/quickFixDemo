@@ -1,70 +1,24 @@
 
 <ion-tabs class="tabs-striped tabs-top tabs-background-stable tabs-color-positive">
 
-  <ion-tab ng-attr-title="{{'wellness' | translate}}" ui-sref="app.tabs.wellness">
-    <ion-nav-view name="tabOne">
+  <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
+    <ion-nav-view ng-attr-name="{{category.id}}">
       <ion-content>
-        <div class="row">
-          <div class="col">
+        <div class="row" ng-repeat="subCategory in groupByTwo(category.subCategories)">
             <div class="card">
-              <div class="item item-divider card-category">
-                {{lang}}
+              <div  class="item item-divider card-category">
+                {{subCategory[0][lang].name}}
               </div>
             </div>
             <div class="card ">
               <div class="item item-divider card-category">
-                Epilation
-              </div>
-            </div>
-            <div class="card ">
-              <div class="item item-divider card-category">
-                Epilation
+                {{subCategory[1][lang].name}}
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card ">
-              <div class="item item-divider card-category">
-                Epilation
-              </div>
-            </div>
-            <div class="card ">
-              <div class="item item-divider card-category">
-                Epilation
-              </div>
-            </div>
-            <div class="card ">
-              <div class="item item-divider card-category">
-                Epilation
-              </div>
-            </div>
-          </div>
-        </div>
       </ion-content>
     </ion-nav-view>
   </ion-tab>
-  <ion-tab ng-attr-title="{{'beauty'| translate}}" ui-sref="app.tabs.beauty">
-    <ion-nav-view name="tabTwo">
-      <ion-content>
-        Tab three I am
-      </ion-content>
-    </ion-nav-view>
-  </ion-tab>
-
-  <ion-tab ng-attr-title="{{'health'| translate}}" ui-sref="app.tabs.health">
-    <ion-nav-view name="tabThree"><ion-content>Tab four I am</ion-content></ion-nav-view>
-  </ion-tab>
-     <!--<div class="tabs">-->
-       <!--<a class="tab-item active" href="#">-->
-         <!--{{"wellness" | translate}}-->
-       <!--</a>-->
-       <!--<a class="tab-item" href="#/beauty">-->
-         <!--{{"beauty" | translate}}-->
-       <!--</a>-->
-       <!--<a class="tab-item" href="#">-->
-         <!--{{"health" | translate}}-->
-       <!--</a>-->
-     <!--</div>-->
    </ion-tabs>
 
 
