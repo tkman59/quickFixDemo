@@ -33,6 +33,10 @@
     padding-top: 5px;
 }
 
+.left-menu-size{
+    width: 150px;
+}
+
 .input-search{
     background-color: transparent;
     border: none;
