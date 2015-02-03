@@ -4,18 +4,30 @@
   <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
     <ion-nav-view ng-attr-name="{{category.id}}">
       <ion-content>
-        <div class="row" ng-repeat="subCategory in groupByTwo(category.subCategories)">
-            <div class="card">
-              <div  class="item item-divider card-category">
-                {{subCategory[0][lang].name}}
+          <div class="grid-card" >
+              <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even">
+                  <div class="col col-center" >
+                      <div class="card">
+                          <div  class="item item-divider card-category">
+                              {{subCategory[lang].name}}
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="card ">
-              <div class="item item-divider card-category">
-                {{subCategory[1][lang].name}}
-              </div>
-            </div>
           </div>
+          <div class="grid-card">
+              <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
+                  <div class="col col-center" >
+                      <div class="card">
+                          <div  class="item item-divider card-category">
+                              {{subCategory[lang].name}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
       </ion-content>
     </ion-nav-view>
   </ion-tab>

@@ -49,3 +49,8 @@
     width: 150px;
     padding-top: 60px;
 }
+
+.grid-card{
+    width: 50%;
+    float: left;
+}

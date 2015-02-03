@@ -33,13 +33,6 @@ angular.module('starter.controllers', [])
         $scope.categories = Categories.all();
 
 
-        $scope.groupByTwo = function (arr) {
-            var newArr = [];
-            for (var i=0; i<arr.length; i+=2) {
-                newArr.push([arr[i],arr[i+1]]);
-            }
-            return newArr;
-        };
 
 })
 
