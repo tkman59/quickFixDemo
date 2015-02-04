@@ -54,3 +54,27 @@
     width: 50%;
     float: left;
 }
+
+.grid-card-form{
+    width: 100%;
+    float: left;
+}
+
+.odd-card{
+    padding-top: 10px;
+}
+
+.card-left{
+    margin-right: 0px;
+    z-index: 100;
+}
+
+.card-right{
+    margin-left: -1px;
+    max-width: 190px;
+}
+
+.card-right > .item > span{
+    float: left;
+    margin-bottom: 20px;
+}

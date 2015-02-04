@@ -1,37 +1,65 @@
 
 <ion-tabs class="tabs-striped tabs-top tabs-background-stable tabs-color-positive">
 
-  <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
-    <ion-nav-view ng-attr-name="{{category.id}}">
-      <ion-content>
-          <div class="grid-card" >
-              <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even">
-                  <div class="col col-center" >
-                      <div class="card">
-                          <div  class="item item-divider card-category">
-                              {{subCategory[lang].name}}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="grid-card">
-              <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
-                  <div class="col col-center" >
-                      <div class="card">
-                          <div  class="item item-divider card-category">
-                              {{subCategory[lang].name}}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+    <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
+        <ion-nav-view ng-attr-name="{{category.id}}">
+            <ion-content>
+                <div class="grid-card-form" >
+                    <div class="row">
+                        <div class="card card-left">
+                            <div  class="item item-divider card-category">
+                                Pouet
+                            </div>
+                        </div>
+                        <div  class="card card-right">
+                            <div  class="item" >
+                                <span>
+                                    Ma position <i class="ion-chevron-down"></i>
+                                </span>
+                                <span>
+                                    04/02/2015 0h30 <i class="ion-chevron-down"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div  class="card">
+                            jfejfiejifjij
+                        </div>
+
+                    </div>
+                </div>
+                <div class="grid-card" >
+                    <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even" ng-click="">
+                        <div class="col col-center" >
+                            <div class="card">
+                                <div  class="item item-divider card-category">
+                                    {{subCategory[lang].name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card odd-card">
+                    <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
+                        <div class="col col-center" >
+                            <div class="card">
+                                <div  class="item item-divider card-category">
+                                    {{subCategory[lang].name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-      </ion-content>
-    </ion-nav-view>
-  </ion-tab>
-   </ion-tabs>
+
+
+            </ion-content>
+        </ion-nav-view>
+    </ion-tab>
+</ion-tabs>
 
 
 
