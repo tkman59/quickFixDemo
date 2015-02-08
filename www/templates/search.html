@@ -5,10 +5,10 @@
         <ion-nav-view ng-attr-name="{{category.id}}">
             <ion-content>
                 <div class="grid-card-form" >
-                    <div class="row">
+                    <div class="row row-form">
                         <div class="card card-left">
                             <div  class="item item-divider card-category">
-                                Pouet
+                                {{subCategorySelected[lang].name}}
                             </div>
                         </div>
                         <div  class="card card-right">
@@ -24,12 +24,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div  class="card">
-                            jfejfiejifjij
+                        <div  class="card card-services">
+                            <ion-checkbox ng-repeat="service in subCategorySelected.services">
+                                {{service[lang].name}}
+                                <i class="ion-information-circled" ng-show="service[lang].info!=''" ng-click="modal.show()"></i>
+                                <script id="modal-info.html" type="text/ng-template">
+                                    <ion-modal-view>
+                                        <ion-header-bar>
+                                            <h1 class="title">My Modal title</h1>
+                                        </ion-header-bar>
+                                        <ion-content>
+                                            Hello! {{service[lang].info}}
+                                        </ion-content>
+                                    </ion-modal-view>
+                                </script>
+                            </ion-checkbox>
+
                         </div>
 
                     </div>
                 </div>
+
                 <div class="grid-card" >
                     <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even" ng-click="">
                         <div class="col col-center" >

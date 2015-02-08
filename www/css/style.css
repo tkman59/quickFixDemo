@@ -78,3 +78,12 @@
     float: left;
     margin-bottom: 20px;
 }
+
+.row-form > .card {
+    margin-bottom: 0px;
+}
+
+.card-services{
+    margin-top: 0px;
+    width: 93%;
+}
