@@ -14,7 +14,7 @@
                         <div  class="card card-right">
                             <div  class="item" >
                                 <span>
-                                    Ma position <i class="ion-chevron-down"></i>
+                                    Ma position <i class="ion-chevron-down" ></i>
                                 </span>
                                 <span>
                                     04/02/2015 0h30 <i class="ion-chevron-down"></i>
@@ -25,20 +25,15 @@
                     </div>
                     <div class="row">
                         <div  class="card card-services">
-                            <ion-checkbox ng-repeat="service in subCategorySelected.services">
-                                {{service[lang].name}}
-                                <i class="ion-information-circled" ng-show="service[lang].info!=''" ng-click="modal.show()"></i>
-                                <script id="modal-info.html" type="text/ng-template">
-                                    <ion-modal-view>
-                                        <ion-header-bar>
-                                            <h1 class="title">My Modal title</h1>
-                                        </ion-header-bar>
-                                        <ion-content>
-                                            Hello! {{service[lang].info}}
-                                        </ion-content>
-                                    </ion-modal-view>
-                                </script>
-                            </ion-checkbox>
+                            <div class="row" ng-repeat="service in subCategorySelected.services">
+                                <ion-checkbox  class="no-border">
+                                    {{service[lang].name}}
+                                </ion-checkbox>
+                                <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="openModal(service[lang].info)" ></i>
+
+                            </div>
+
+
 
                         </div>
 

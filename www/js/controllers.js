@@ -34,32 +34,28 @@ angular.module('starter.controllers', [])
 
         $scope.subCategorySelected = $scope.categories[1].subCategories[1];
 
-        $scope.modal = $ionicModal;
-        $ionicModal.fromTemplateUrl('modal-info.html', {
+        $ionicModal.fromTemplateUrl('templates/modal-info.html', {
             scope: $scope,
+            info: $scope.info,
             animation: 'slide-in-up'
         }).then(function(modal) {
-            $scope.modal = modal;
+            $scope.modal = modal
+        },function(reason){
+          $log.info('==>'+reason);
         });
-        $scope.openModal = function() {
-            $scope.modal.show();
+
+        $scope.openModal = function(info) {
+            $scope.info = info;
+            $scope.modal.show()
         };
+
         $scope.closeModal = function() {
             $scope.modal.hide();
         };
-        //Cleanup the modal when we're done with it!
+
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
         });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function() {
-            // Execute action
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function() {
-            // Execute action
-        });
-
 
 })
 

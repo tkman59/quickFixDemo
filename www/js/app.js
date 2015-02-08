@@ -34,13 +34,17 @@ angular.module('starter', ['ionic','ionic.utils', 'starter.services','starter.co
       $translateProvider.translations('en', {
             beauty: "Beauty",
             wellness: "Wellness",
-            health: "Health"
+            health: "Health",
+            description: "Description",
+            close:'Close'
 
       });
       $translateProvider.translations('fr', {
           beauty: "Beauté",
           wellness: "Bien-être",
-          health: "Santé"
+          health: "Santé",
+          description: "Description",
+          close:'Fermer'
       });
       $translateProvider.preferredLanguage("en");
       $translateProvider.fallbackLanguage("en");

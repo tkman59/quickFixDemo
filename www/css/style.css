@@ -87,3 +87,11 @@
     margin-top: 0px;
     width: 93%;
 }
+
+.padding-center{
+    padding-top: 15px;
+}
+
+.no-border{
+    border-style: none;
+}
