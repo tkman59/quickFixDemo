@@ -46,7 +46,16 @@ angular.module('starter.controllers', [])
 
         $scope.categories = Categories.all();
 
-        $scope.subCategorySelected = $scope.categories[1].subCategories[1];
+        $scope.subCategorySelected = undefined;
+
+        $scope.showForm = function(subCategory){
+            $scope.subCategorySelected = subCategory;
+        };
+
+        $scope.closeForm = function(){
+            $scope.subCategorySelected = undefined;
+        };
+
 
         $ionicModal.fromTemplateUrl('templates/modal-info.html', {
             scope: $scope,

@@ -58,6 +58,8 @@
 .grid-card-form{
     width: 100%;
     float: left;
+    position: absolute;
+    z-index: 10000;
 }
 
 .odd-card{
@@ -98,4 +100,9 @@
 
 .padding-12{
     padding-left: 15px;
+}
+
+.close-form{
+    position: absolute;
+    padding-top: 20px;
 }

@@ -4,7 +4,7 @@
     <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
         <ion-nav-view ng-attr-name="{{category.id}}">
             <ion-content>
-                <div class="grid-card-form" >
+                <div class="grid-card-form" ng-show="subCategorySelected">
                     <div class="row row-form">
                         <div class="card card-left">
                             <div  class="item item-divider card-category">
@@ -21,7 +21,9 @@
                                 </span>
                             </div>
 
+
                         </div>
+                        <i class="ion-close-circled close-form" ng-click="closeForm()"></i>
                     </div>
                     <div class="row">
                         <div  class="card card-services">
@@ -40,7 +42,7 @@
                 <div class="grid-card" >
                     <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even" ng-click="">
                         <div class="col col-center" >
-                            <div class="card">
+                            <div class="card" ng-click="showForm(subCategory)">
                                 <div  class="item item-divider card-category">
                                     {{subCategory[lang].name}}
                                 </div>
@@ -51,7 +53,7 @@
                 <div class="grid-card odd-card">
                     <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
                         <div class="col col-center" >
-                            <div class="card">
+                            <div class="card" ng-click="showForm(subCategory)">
                                 <div  class="item item-divider card-category">
                                     {{subCategory[lang].name}}
                                 </div>
