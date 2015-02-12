@@ -28,6 +28,20 @@ angular.module('starter.controllers', [])
 
         $log.info($localStorage.get('isLogin'));
       };
+
+        $scope.showDate = function (){
+            var options = {
+                date: new Date(),
+                mode: 'time'
+            };
+
+            datePicker.show(options, function(date){
+                alert("date result " + date);
+            });
+        };
+
+
+
         $scope.lang=$translate.use();
 
         $scope.categories = Categories.all();
@@ -56,6 +70,8 @@ angular.module('starter.controllers', [])
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
         });
+
+
 
 })
 

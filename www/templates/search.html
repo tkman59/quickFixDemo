@@ -17,7 +17,7 @@
                                     Ma position <i class="ion-chevron-down" ></i>
                                 </span>
                                 <span>
-                                    04/02/2015 0h30 <i class="ion-chevron-down"></i>
+                                    04/02/2015 0h30 <i class="ion-chevron-down" ng-click="showDate()"></i>
                                 </span>
                             </div>
 
@@ -26,17 +26,14 @@
                     <div class="row">
                         <div  class="card card-services">
                             <div class="row" ng-repeat="service in subCategorySelected.services">
-                                <ion-checkbox  class="no-border">
-                                    {{service[lang].name}}
-                                </ion-checkbox>
                                 <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="openModal(service[lang].info)" ></i>
+                                <i class="padding-12" ng-hide="service[lang].info!=''"></i>
+                                <ion-radio  class="no-border">
+                                    {{service[lang].name}}
+                                </ion-radio>
 
                             </div>
-
-
-
                         </div>
-
                     </div>
                 </div>
 

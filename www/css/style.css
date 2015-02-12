@@ -95,3 +95,7 @@
 .no-border{
     border-style: none;
 }
+
+.padding-12{
+    padding-left: 15px;
+}
