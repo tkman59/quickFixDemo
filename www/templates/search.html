@@ -1,74 +1,72 @@
-
-<ion-tabs class="tabs-striped tabs-top tabs-background-stable tabs-color-positive">
-
-    <ion-tab ng-repeat="category in categories" ng-attr-title="{{category[lang].name}}" ng-attr-ui-sref="{{category.id}}" >
-        <ion-nav-view ng-attr-name="{{category.id}}">
-            <ion-content>
-                <div class="grid-card-form" ng-show="subCategorySelected">
-                    <div class="row row-form">
-                        <div class="card card-left">
-                            <div  class="item item-divider card-category">
-                                {{subCategorySelected[lang].name}}
-                            </div>
-                        </div>
-                        <div  class="card card-right">
-                            <div  class="item" >
-                                <span>
-                                    Ma position <i class="ion-chevron-down" ></i>
-                                </span>
-                                <span>
-                                    04/02/2015 0h30 <i class="ion-chevron-down" ng-click="showDate()"></i>
-                                </span>
-                            </div>
-
-
-                        </div>
-                        <i class="ion-close-circled close-form" ng-click="closeForm()"></i>
+<md-tabs class="margin-under-header">
+    <md-tab ng-repeat="category in categories" >
+        <md-tab-label>
+            <i>{{category[lang].name}}</i>
+        </md-tab-label>
+        <div class="grid-card-form" ng-show="subCategorySelected">
+            <div class="row row-form">
+                <div class="card card-left">
+                    <div  class="item item-divider card-category" ng-style="{'background-color':subCategorySelected.color}">
+                        {{subCategorySelected[lang].name}}
                     </div>
-                    <div class="row">
-                        <div  class="card card-services">
-                            <div class="row" ng-repeat="service in subCategorySelected.services">
-                                <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="openModal(service[lang].info)" ></i>
-                                <i class="padding-12" ng-hide="service[lang].info!=''"></i>
-                                <ion-radio  class="no-border">
-                                    {{service[lang].name}}
-                                </ion-radio>
+                </div>
+                <div  class="card card-right">
+                    <div  class="item" >
+        <span>
+        Ma position <i class="ion-chevron-down" ></i>
+        </span>
+        <span>
+        04/02/2015 0h30 <i class="ion-chevron-down" ng-click="showDate()"></i>
+        </span>
+                    </div>
 
-                            </div>
+                </div>
+                <i class="ion-close-circled close-form" ng-click="closeForm()"></i>
+            </div>
+            <div class="row">
+                <div  class="card card-services">
+                    <div class="row" ng-repeat="service in subCategorySelected.services">
+                        <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="openModal(service[lang].info)" ></i>
+                        <i class="padding-12" ng-hide="service[lang].info!=''"></i>
+                        <ion-radio  class="no-border">
+                            {{service[lang].name}}
+                        </ion-radio>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-card" >
+            <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even">
+                <div class="col col-center" >
+                    <div class="card" ng-click="showAdvanced($event,subCategory)">
+                        <div  class="item item-divider card-category" ng-style="{'background-color':subCategory.color}">
+                            {{subCategory[lang].name}}
                         </div>
                     </div>
                 </div>
-
-                <div class="grid-card" >
-                    <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even" ng-click="">
-                        <div class="col col-center" >
-                            <div class="card" ng-click="showForm(subCategory)">
-                                <div  class="item item-divider card-category">
-                                    {{subCategory[lang].name}}
-                                </div>
-                            </div>
+            </div>
+        </div>
+        <div class="grid-card odd-card">
+            <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
+                <div class="col col-center" >
+                    <div class="card" ng-click="showAdvanced($event,subCategory)">
+                        <div  class="item item-divider card-category" ng-style="{'background-color':subCategory.color}">
+                            {{subCategory[lang].name}}
                         </div>
                     </div>
                 </div>
-                <div class="grid-card odd-card">
-                    <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
-                        <div class="col col-center" >
-                            <div class="card" ng-click="showForm(subCategory)">
-                                <div  class="item item-divider card-category">
-                                    {{subCategory[lang].name}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
 
 
 
 
-            </ion-content>
-        </ion-nav-view>
-    </ion-tab>
-</ion-tabs>
+    </md-tab>
+</md-tabs>
+
+
+
 
 
 
