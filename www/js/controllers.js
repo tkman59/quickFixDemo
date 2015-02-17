@@ -14,7 +14,22 @@ angular.module('starter.controllers', [])
 
     })
 
-.controller('SearchCtrl', function($scope,$localStorage,$log,$translate,$ionicModal ,Categories) {
+    .controller('ModalInfoCtrl', function($scope,$log,$translate,$mdDialog,subCategory) {
+
+        $scope.subCategorySelected=subCategory;
+        $scope.lang=$translate.use();
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function(answer) {
+            $mdDialog.hide(answer);
+        };
+    })
+
+.controller('SearchCtrl', function($scope,$localStorage,$log,$translate,$mdDialog,$ionicScrollDelegate,Categories) {
       $scope.isLogin=$localStorage.get('isLogin');
 
       $scope.changeIsLogin = function (){
@@ -47,40 +62,62 @@ angular.module('starter.controllers', [])
         $scope.categories = Categories.all();
 
         $scope.subCategorySelected = undefined;
+        $scope.subCategorySelectedRight = undefined;
+        $scope.topPx= '0px';
 
-        $scope.showForm = function(subCategory){
+        //$scope.topStyle={'top' : '\''+$scope.topPx + 'px\''};
+
+
+        $scope.showForm = function(ev,subCategory){
+            $scope.subCategorySelectedRight = undefined;
+            $log.info(ev);
+           // ev.toElement.
+            var top= 0;
+            top= ev.toElement.offsetTop;
+            top=top-25;
+           $scope.topPx = ev.toElement.offsetTop-25+ 'px';
             $scope.subCategorySelected = subCategory;
+        };
+
+        $scope.showFormRight = function(ev,subCategory){
+            $scope.subCategorySelected = undefined;
+            $log.info(ev);
+            // ev.toElement.
+            var top= 0;
+            top= ev.toElement.offsetTop;
+            top=top-25;
+            $scope.topPx = ev.toElement.offsetTop-25+ 'px';
+            $scope.subCategorySelectedRight = subCategory;
         };
 
         $scope.closeForm = function(){
             $scope.subCategorySelected = undefined;
+            $scope.subCategorySelectedRight = undefined;
         };
 
 
-        $ionicModal.fromTemplateUrl('templates/modal-info.html', {
-            scope: $scope,
-            info: $scope.info,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal
-        },function(reason){
-          $log.info('==>'+reason);
-        });
+        $scope.showAdvanced = function(ev,subCategory) {
+            $mdDialog.show({
+                controller: 'ModalInfoCtrl',
+                templateUrl: 'templates/modal-info.html',
+                targetEvent: ev,
+                subCategory:subCategory
 
-        $scope.openModal = function(info) {
-            $scope.info = info;
-            $scope.modal.show()
+            })
+                .then(function(answer) {
+                    $log.info('You said the information was "' + answer + '".');
+                }, function() {
+                    $log.info( 'You cancelled the dialog.');
+                });
         };
 
-        $scope.closeModal = function() {
-            $scope.modal.hide();
+        $scope.scrollTo = function (id){
+            $ionicScrollDelegate.$getByHandle(id).scrollTop();
         };
-
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
 
 
 
 })
+
+
 

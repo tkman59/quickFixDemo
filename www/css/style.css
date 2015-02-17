@@ -60,6 +60,8 @@
     float: left;
     position: absolute;
     z-index: 10000;
+   /* top:453px; /*-25px*/
+    left:5px;
 }
 
 .odd-card{
@@ -105,4 +107,22 @@
 .close-form{
     position: absolute;
     padding-top: 20px;
+}
+
+.margin-under-header{
+    margin-top: 40px;
+}
+
+
+.card-category{
+  color: #fff;
+}
+
+/*//fix bug scroll content tab: https://github.com/angular/material/issues/913*/
+md-tabs {
+      overflow: auto !important;
+}
+
+.width-100{
+    width: 100%;
 }

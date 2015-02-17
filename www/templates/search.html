@@ -3,9 +3,9 @@
         <md-tab-label>
             <i>{{category[lang].name}}</i>
         </md-tab-label>
-        <div class="grid-card-form" ng-show="subCategorySelected">
+        <div class="grid-card-form" ng-show="subCategorySelected" ng-style="{'top':topPx}">
             <div class="row row-form">
-                <div class="card card-left">
+                <div class="card card-left" ng-click="closeForm()">
                     <div  class="item item-divider card-category" ng-style="{'background-color':subCategorySelected.color}">
                         {{subCategorySelected[lang].name}}
                     </div>
@@ -21,7 +21,6 @@
                     </div>
 
                 </div>
-                <i class="ion-close-circled close-form" ng-click="closeForm()"></i>
             </div>
             <div class="row">
                 <div  class="card card-services">
@@ -36,10 +35,48 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid-card-form" ng-show="subCategorySelectedRight" ng-style="{'top':topPx}">
+            <div class="row row-form">
+                <div class="card card-right">
+                    <div  class="item" >
+                        <span>
+                        Ma position <i class="ion-chevron-down" ></i>
+                        </span>
+                        <span>
+                        04/02/2015 0h30 <i class="ion-chevron-down" ng-click="showDate()"></i>
+                        </span>
+                    </div>
+                </div>
+                <div  class="card card-left"  ng-click="closeForm()">
+                    <div  class="item item-divider card-category" ng-style="{'background-color':subCategorySelectedRight.color}">
+                        {{subCategorySelectedRight[lang].name}}
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div  class="card card-services">
+                    <md-radio-group ng-model="data.group1">
+                        <div class="row" ng-repeat="service in subCategorySelectedRight.services">
+                            <md-radio-button value="{{service.id}}"> {{service[lang].name}}</md-radio-button>
+                            <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="showAdvanced($event,subCategorySelectedRight)" ></i>
+
+                        </div>
+                    </md-radio-group>
+                    <div >
+                        <md-button class="md-raised md-primary width-100">TROUVER</md-button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
         <div class="grid-card" >
             <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$even">
                 <div class="col col-center" >
-                    <div class="card" ng-click="showAdvanced($event,subCategory)">
+                    <div class="card" ng-click="showForm($event,subCategory)">
                         <div  class="item item-divider card-category" ng-style="{'background-color':subCategory.color}">
                             {{subCategory[lang].name}}
                         </div>
@@ -50,7 +87,7 @@
         <div class="grid-card odd-card">
             <div class="row" ng-repeat="subCategory in category.subCategories" ng-show="$odd">
                 <div class="col col-center" >
-                    <div class="card" ng-click="showAdvanced($event,subCategory)">
+                    <div class="card" ng-click="showFormRight($event,subCategory)" delegate-handle="{{subCategory.id}}">
                         <div  class="item item-divider card-category" ng-style="{'background-color':subCategory.color}">
                             {{subCategory[lang].name}}
                         </div>
@@ -58,7 +95,6 @@
                 </div>
             </div>
         </div>
-
 
 
 
