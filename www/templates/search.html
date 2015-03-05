@@ -60,12 +60,12 @@
                 <div  class="card card-services">
                     <md-radio-group ng-model="data.group1">
                         <div class="row" ng-repeat="service in subCategorySelectedRight.services">
-                            <md-radio-button value="{{service.id}}"> {{service[lang].name}}</md-radio-button>
-                            <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="showAdvanced($event,subCategorySelectedRight)" ></i>
+                            <md-radio-button value="{{service.id}}" class="width-100"> {{service[lang].name}}</md-radio-button>
+                            <i class="width-100 padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="showAdvanced($event,subCategorySelectedRight)" ></i>
 
                         </div>
                     </md-radio-group>
-                    <div >
+                    <div class="button-padding">
                         <md-button class="md-raised md-primary width-100">TROUVER</md-button>
                     </div>
 

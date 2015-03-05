@@ -69,7 +69,7 @@
 }
 
 .card-left{
-    margin-right: 0px;
+    margin-right: 22px;
     z-index: 100;
 }
 
@@ -88,8 +88,9 @@
 }
 
 .card-services{
-    margin-top: 0px;
-    width: 93%;
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 0px;
 }
 
 .padding-center{
@@ -125,4 +126,8 @@ md-tabs {
 
 .width-100{
     width: 100%;
+}
+
+.button-padding{
+    padding: 10px;
 }
