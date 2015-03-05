@@ -15,6 +15,7 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker"
+    "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker",
+    "org.apache.cordova.geolocation"
   ]
 }
