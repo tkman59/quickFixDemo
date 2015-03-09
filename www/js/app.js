@@ -18,6 +18,8 @@ angular.module('starter', ['ionic','ionic.utils', 'starter.services','starter.co
           StatusBar.styleDefault();
         }
 
+      $log.info("test -> " +  navigator.globalization);
+
       if(typeof navigator.globalization !== "undefined") {
           navigator.globalization.getPreferredLanguage(function(language) {
               $translate.use((language.value).split("-")[0]).then(function(data) {
@@ -65,15 +67,18 @@ angular.module('starter', ['ionic','ionic.utils', 'starter.services','starter.co
             }
           }
         })
-          .state('app.beauty', {
-              url: "/beauty",
+
+
+          .state('app.list', {
+              url: "/list",
               views: {
                   'menuContent': {
-                      templateUrl: "templates/search-beauty.html"
-
+                      templateUrl: "templates/list.html",
+                      controller: 'ListCtrl'
                   }
               }
           })
+
           ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');
