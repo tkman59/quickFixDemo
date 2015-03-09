@@ -1,7 +1,7 @@
 <md-tabs class="margin-under-header">
-    <md-tab ng-repeat="category in categories" >
-        <md-tab-label>
-            <i>{{category[lang].name}}</i>
+    <md-tab ng-repeat="category in categories" md-on-deselect="closeForm()">
+        <md-tab-label >
+            <i >{{category[lang].name}}</i>
         </md-tab-label>
         <div class="grid-card-form" ng-show="subCategorySelected" ng-style="{'top':topPx}">
             <div class="row row-form">

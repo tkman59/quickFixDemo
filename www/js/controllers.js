@@ -30,6 +30,8 @@ angular.module('starter.controllers', [])
     })
 
 .controller('SearchCtrl', function($scope,$localStorage,$log,$translate,$mdDialog,$ionicScrollDelegate,Categories) {
+     $scope.location="A proximiter";
+
       $scope.isLogin=$localStorage.get('isLogin');
 
       $scope.changeIsLogin = function (){
