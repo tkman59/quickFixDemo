@@ -131,3 +131,26 @@ md-tabs {
 .button-padding{
     padding: 10px;
 }
+
+
+.card-criteria{
+    width: 100px;
+    float: left;
+    text-align: center;
+    background-color: rgb(0, 150, 136);
+    color: #ffffff;
+    margin: 5px;
+}
+
+.card-time{
+    width: 100px;
+    float: left;
+    text-align: center;
+    background-color: rgb(0, 150, 136);
+    color: #ffffff;
+    margin: 5px;
+}
+
+.list-content{
+    float: left;
+}
