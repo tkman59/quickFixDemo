@@ -41,7 +41,8 @@
                 <div class="card card-right">
                     <div  class="item" >
                         <span>
-                            <i class="ion-location" ></i> Près d'ici
+                            <i class="ion-location" ></i>
+                            <ion-google-place placeholder="A proximité" ng-model="location" />
                         </span>
                         <span>
                             <i class="ion-calendar" ng-click="showDate()"></i> 04/02/2015
@@ -100,7 +101,6 @@
         </div>
 
 
-        <ion-google-place placeholder="Enter an address, Apt# and ZIP" ng-model="location" />
 
 
     </md-tab>
