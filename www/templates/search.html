@@ -24,13 +24,15 @@
             </div>
             <div class="row">
                 <div  class="card card-services">
-                    <div class="row" ng-repeat="service in subCategorySelected.services">
-                        <i class="padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="openModal(service[lang].info)" ></i>
-                        <i class="padding-12" ng-hide="service[lang].info!=''"></i>
-                        <ion-radio  class="no-border">
-                            {{service[lang].name}}
-                        </ion-radio>
+                    <md-radio-group ng-model="data.group1">
+                        <div class="row" ng-repeat="service in subCategorySelected.services">
+                            <md-radio-button value="{{service.id}}" class="width-100"> {{service[lang].name}}</md-radio-button>
+                            <i class="width-100 padding-center ion-information-circled" ng-show="service[lang].info!=''" ng-click="showAdvanced($event,subCategorySelected)" ></i>
 
+                        </div>
+                    </md-radio-group>
+                    <div class="button-padding">
+                        <md-button class="md-raised md-primary width-100" ui-sref="app.list">TROUVER</md-button>
                     </div>
                 </div>
             </div>

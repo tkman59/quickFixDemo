@@ -16,6 +16,7 @@
   },
   "cordovaPlugins": [
     "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker",
-    "org.apache.cordova.geolocation"
+    "org.apache.cordova.geolocation",
+    "https://git-wip-us.apache.org/repos/asf/cordova-plugin-globalization.git"
   ]
 }

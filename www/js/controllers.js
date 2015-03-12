@@ -37,7 +37,9 @@ angular.module('starter.controllers', [])
     })
 
         .controller('SearchCtrl', function($scope,$localStorage,$log,$translate,$mdDialog,$ionicScrollDelegate,Categories) {
-            $scope.location="A proximiter";
+
+
+        $scope.location="A proximiter";
 
             $scope.isLogin=$localStorage.get('isLogin');
 
@@ -67,7 +69,7 @@ angular.module('starter.controllers', [])
 
 
             $scope.lang=$translate.use();
-
+            
             $scope.categories = Categories.all();
 
             $scope.subCategorySelected = undefined;
