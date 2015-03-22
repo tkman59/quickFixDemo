@@ -22,3 +22,11 @@ ionic serve --lab
 # Run on device
 
 ionic run
+
+#Bug
+
+click on md-tab with mobile + ionic:
+https://github.com/angular/material/issues/1403
+
+scroll into md-tab does work
+

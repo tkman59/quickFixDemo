@@ -55,17 +55,10 @@ angular.module('starter.controllers', [])
                 $log.info($localStorage.get('isLogin'));
             };
 
-            $scope.showDate = function (){
-                var options = {
-                    date: new Date(),
-                    mode: 'time'
-                };
 
-                datePicker.show(options, function(date){
-                    alert("date result " + date);
-                });
-            };
 
+
+        $log.info("test intoSearchCtrl -> " +  navigator.globalization);
 
 
             $scope.lang=$translate.use();

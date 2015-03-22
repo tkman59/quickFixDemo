@@ -2090,8 +2090,7 @@ angular.module('starter.services', [])
 
       ];
 
-      $log.info("old:"+categoriesOLD);
-      $log.info("new:"+categories);
+
 
       return {
         all: function() {
