@@ -61,6 +61,16 @@ angular.module('starter.controllers', [])
         $log.info("test intoSearchCtrl -> " +  navigator.globalization);
 
 
+        $scope.glob=  (typeof navigator.globalization !== "undefined");
+        //navigator.globalization.getPreferredLanguage(function(language) {
+        //    $log.info("language2 -> " +  language.value);
+        //    $translate.use((language.value.toLowerCase()).split("-")[0]).then(function(data) {
+        //        $log.info("SUCCESS2 -> " + data);
+        //    }, function(error) {
+        //        $log.info("ERROR2 -> " + error);
+        //    });
+        //}, null);
+
             $scope.lang=$translate.use();
 
             $scope.categories = Categories.all();

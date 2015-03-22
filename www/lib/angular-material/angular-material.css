@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.8.3
+ * v0.8.3-master-49d8434
  */
 *, *:before, *:after {
   box-sizing: border-box; }
@@ -14,6 +14,7 @@ html, body {
   height: 100%;
   color: rgba(0, 0, 0, 0.87);
   background: white;
+  position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
@@ -2809,7 +2810,20 @@ md-autocomplete {
   display: block;
   height: 40px;
   position: relative;
-  overflow: visible; }
+  overflow: visible;
+  min-width: 190px; }
+  md-autocomplete[md-floating-label] {
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+    height: auto; }
+    md-autocomplete[md-floating-label] md-autocomplete-wrap {
+      height: auto; }
+    md-autocomplete[md-floating-label] md-input-container {
+      padding-bottom: 0; }
+    md-autocomplete[md-floating-label] button {
+      top: auto;
+      bottom: 5px; }
   md-autocomplete md-autocomplete-wrap {
     display: block;
     position: relative;
@@ -2834,7 +2848,7 @@ md-autocomplete {
         transition: opacity 0.15s linear; }
         md-autocomplete md-autocomplete-wrap md-progress-linear.ng-leave.ng-leave-active {
           opacity: 0; }
-  md-autocomplete input {
+  md-autocomplete input:not(.md-input) {
     position: absolute;
     left: 0;
     top: 0;
@@ -2849,7 +2863,7 @@ md-autocomplete {
     outline: none;
     z-index: 2;
     background: transparent; }
-    md-autocomplete input::-ms-clear {
+    md-autocomplete input:not(.md-input)::-ms-clear {
       display: none; }
   md-autocomplete button {
     position: absolute;
@@ -2939,7 +2953,7 @@ md-autocomplete {
 md-backdrop {
   z-index: 50;
   background-color: rgba(0, 0, 0, 0);
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   right: 0;
@@ -2952,6 +2966,8 @@ md-backdrop {
     z-index: 69; }
   md-backdrop.md-sidenav-backdrop {
     z-index: 59; }
+  md-backdrop.md-click-catcher {
+    position: fixed; }
   md-backdrop.ng-enter {
     -webkit-animation: cubic-bezier(0.25, 0.8, 0.25, 1) mdBackdropFadeIn 0.5s both;
             animation: cubic-bezier(0.25, 0.8, 0.25, 1) mdBackdropFadeIn 0.5s both; }
@@ -2986,6 +3002,140 @@ md-backdrop {
 
   to {
     opacity: 0; } }
+
+/**
+ * Position a FAB button.
+ */
+.md-button {
+  color: currentColor;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  outline: none;
+  border: 0;
+  padding: 6px;
+  margin: 0;
+  background: transparent;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: inherit;
+  font-variant: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .md-button:focus {
+    outline: none; }
+  .md-button:hover {
+    text-decoration: none; }
+  .md-button.ng-hide {
+    transition: none; }
+  .md-button.md-cornered {
+    border-radius: 0; }
+  .md-button.md-icon {
+    padding: 0;
+    background: none; }
+  .md-button.md-raised {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); }
+  .md-button.md-fab {
+    z-index: 20;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-clip: padding-box;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    transition: 0.2s linear;
+    transition-property: -webkit-transform, box-shadow;
+    transition-property: transform, box-shadow; }
+    .md-button.md-fab.md-fab-bottom-right {
+      top: auto;
+      right: 20px;
+      bottom: 20px;
+      left: auto;
+      position: absolute; }
+    .md-button.md-fab.md-fab-bottom-left {
+      top: auto;
+      right: auto;
+      bottom: 20px;
+      left: 20px;
+      position: absolute; }
+    .md-button.md-fab.md-fab-top-right {
+      top: 20px;
+      right: 20px;
+      bottom: auto;
+      left: auto;
+      position: absolute; }
+    .md-button.md-fab.md-fab-top-left {
+      top: 20px;
+      right: auto;
+      bottom: auto;
+      left: 20px;
+      position: absolute; }
+    .md-button.md-fab .md-ripple-container {
+      border-radius: 50%;
+      background-clip: padding-box;
+      overflow: hidden;
+      -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
+    .md-button.md-fab md-icon {
+      margin-top: 0; }
+    .md-button.md-fab.md-mini {
+      width: 40px;
+      height: 40px; }
+  .md-button:not([disabled]).md-raised:focus, .md-button:not([disabled]).md-raised:hover, .md-button:not([disabled]).md-fab:focus, .md-button:not([disabled]).md-fab:hover {
+    -webkit-transform: translate3d(0, -1px, 0);
+            transform: translate3d(0, -1px, 0); }
+
+.md-toast-open-top .md-button.md-fab-top-left, .md-toast-open-top .md-button.md-fab-top-right {
+  -webkit-transform: translate3d(0, 42px, 0);
+          transform: translate3d(0, 42px, 0); }
+  .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):hover, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):hover {
+    -webkit-transform: translate3d(0, 41px, 0);
+            transform: translate3d(0, 41px, 0); }
+
+.md-toast-open-bottom .md-button.md-fab-bottom-left, .md-toast-open-bottom .md-button.md-fab-bottom-right {
+  -webkit-transform: translate3d(0, -42px, 0);
+          transform: translate3d(0, -42px, 0); }
+  .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):hover, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):hover {
+    -webkit-transform: translate3d(0, -43px, 0);
+            transform: translate3d(0, -43px, 0); }
+
+.md-button-group {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%; }
+
+.md-button-group > .md-button {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: block;
+  overflow: hidden;
+  width: 0;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 0;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+  .md-button-group > .md-button:first-child {
+    border-radius: 2px 0px 0px 2px; }
+  .md-button-group > .md-button:last-child {
+    border-right-width: 1px;
+    border-radius: 0px 2px 2px 0px; }
 
 md-bottom-sheet {
   position: absolute;
@@ -3143,135 +3293,6 @@ md-bottom-sheet {
         text-align: center;
         padding-top: 8px; }
 
-/**
- * Position a FAB button.
- */
-.md-button {
-  color: currentColor;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  position: relative;
-  outline: none;
-  border: 0;
-  padding: 6px;
-  margin: 0;
-  background: transparent;
-  white-space: nowrap;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-style: inherit;
-  font-variant: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  .md-button:focus {
-    outline: none; }
-  .md-button:hover {
-    text-decoration: none; }
-  .md-button.ng-hide {
-    transition: none; }
-  .md-button.md-cornered {
-    border-radius: 0; }
-  .md-button.md-icon {
-    padding: 0;
-    background: none; }
-  .md-button.md-raised {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0); }
-  .md-button.md-fab {
-    z-index: 20;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border-radius: 50%;
-    overflow: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-    transition: 0.2s linear;
-    transition-property: -webkit-transform, box-shadow;
-    transition-property: transform, box-shadow; }
-    .md-button.md-fab.md-fab-bottom-right {
-      top: auto;
-      right: 20px;
-      bottom: 20px;
-      left: auto;
-      position: absolute; }
-    .md-button.md-fab.md-fab-bottom-left {
-      top: auto;
-      right: auto;
-      bottom: 20px;
-      left: 20px;
-      position: absolute; }
-    .md-button.md-fab.md-fab-top-right {
-      top: 20px;
-      right: 20px;
-      bottom: auto;
-      left: auto;
-      position: absolute; }
-    .md-button.md-fab.md-fab-top-left {
-      top: 20px;
-      right: auto;
-      bottom: auto;
-      left: 20px;
-      position: absolute; }
-    .md-button.md-fab md-icon {
-      margin-top: 0; }
-    .md-button.md-fab.md-mini {
-      width: 40px;
-      height: 40px; }
-  .md-button:not([disabled]).md-raised:focus, .md-button:not([disabled]).md-raised:hover, .md-button:not([disabled]).md-fab:focus, .md-button:not([disabled]).md-fab:hover {
-    -webkit-transform: translate3d(0, -1px, 0);
-            transform: translate3d(0, -1px, 0); }
-
-.md-toast-open-top .md-button.md-fab-top-left, .md-toast-open-top .md-button.md-fab-top-right {
-  -webkit-transform: translate3d(0, 42px, 0);
-          transform: translate3d(0, 42px, 0); }
-  .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-left:not([disabled]):hover, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):focus, .md-toast-open-top .md-button.md-fab-top-right:not([disabled]):hover {
-    -webkit-transform: translate3d(0, 41px, 0);
-            transform: translate3d(0, 41px, 0); }
-
-.md-toast-open-bottom .md-button.md-fab-bottom-left, .md-toast-open-bottom .md-button.md-fab-bottom-right {
-  -webkit-transform: translate3d(0, -42px, 0);
-          transform: translate3d(0, -42px, 0); }
-  .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-left:not([disabled]):hover, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):focus, .md-toast-open-bottom .md-button.md-fab-bottom-right:not([disabled]):hover {
-    -webkit-transform: translate3d(0, -43px, 0);
-            transform: translate3d(0, -43px, 0); }
-
-.md-button-group {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  width: 100%; }
-
-.md-button-group > .md-button {
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: block;
-  overflow: hidden;
-  width: 0;
-  border-width: 1px 0px 1px 1px;
-  border-radius: 0;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-  .md-button-group > .md-button:first-child {
-    border-radius: 2px 0px 0px 2px; }
-  .md-button-group > .md-button:last-child {
-    border-right-width: 1px;
-    border-radius: 0px 2px 2px 0px; }
-
 md-card {
   box-sizing: border-box;
   display: -webkit-flex;
@@ -3366,25 +3387,6 @@ md-checkbox {
         -ms-user-select: text;
             user-select: text; }
 
-md-content {
-  display: block;
-  position: relative;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
-  md-content[md-scroll-y] {
-    overflow-y: auto;
-    overflow-x: hidden; }
-  md-content[md-scroll-x] {
-    overflow-x: auto;
-    overflow-y: hidden; }
-  md-content.md-padding {
-    padding: 8px; }
-
-@media (min-width: 600px) {
-  md-content.md-padding {
-    padding: 16px; }
- }
-
 .md-dialog-container {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3454,6 +3456,25 @@ md-dialog {
       margin-left: 8px; }
   md-dialog.md-content-overflow .md-actions {
     border-top: 1px solid; }
+
+md-content {
+  display: block;
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+  md-content[md-scroll-y] {
+    overflow-y: auto;
+    overflow-x: hidden; }
+  md-content[md-scroll-x] {
+    overflow-x: auto;
+    overflow-y: hidden; }
+  md-content.md-padding {
+    padding: 8px; }
+
+@media (min-width: 600px) {
+  md-content.md-padding {
+    padding: 16px; }
+ }
 
 md-divider {
   display: block;
@@ -3551,6 +3572,9 @@ md-input-container {
   md-input-container textarea {
     resize: none;
     overflow: hidden; }
+  md-input-container textarea.md-input {
+    min-height: 56px;
+    -ms-flex-preferred-size: auto; }
   md-input-container label:not(.md-no-float), md-input-container .md-placeholder {
     -webkit-order: 1;
         -ms-flex-order: 1;
@@ -3583,9 +3607,9 @@ md-input-container {
   md-input-container:not(.md-input-has-value) input:not(:focus) {
     color: transparent; }
   md-input-container .md-input {
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
     -webkit-order: 2;
         -ms-flex-order: 2;
             order: 2;
@@ -3836,9 +3860,8 @@ md-progress-circular {
         width: 50px;
         height: 50px;
         box-sizing: border-box;
-        border-width: 5px;
-        border-style: solid;
-        border-color: black black transparent;
+        border: 5px solid black;
+        border-bottom-color: transparent;
         border-radius: 50%; }
     md-progress-circular .md-inner .md-left {
       left: 0; }
@@ -3859,8 +3882,7 @@ md-progress-circular {
     -webkit-transform: rotate(-135deg);
             transform: rotate(-135deg); }
   md-progress-circular[value="0"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="1"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3871,8 +3893,7 @@ md-progress-circular {
     -webkit-transform: rotate(-131.4deg);
             transform: rotate(-131.4deg); }
   md-progress-circular[value="1"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="2"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3883,8 +3904,7 @@ md-progress-circular {
     -webkit-transform: rotate(-127.8deg);
             transform: rotate(-127.8deg); }
   md-progress-circular[value="2"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="3"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3895,8 +3915,7 @@ md-progress-circular {
     -webkit-transform: rotate(-124.2deg);
             transform: rotate(-124.2deg); }
   md-progress-circular[value="3"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="4"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3907,8 +3926,7 @@ md-progress-circular {
     -webkit-transform: rotate(-120.6deg);
             transform: rotate(-120.6deg); }
   md-progress-circular[value="4"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="5"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3919,8 +3937,7 @@ md-progress-circular {
     -webkit-transform: rotate(-117deg);
             transform: rotate(-117deg); }
   md-progress-circular[value="5"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="6"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3931,8 +3948,7 @@ md-progress-circular {
     -webkit-transform: rotate(-113.4deg);
             transform: rotate(-113.4deg); }
   md-progress-circular[value="6"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="7"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3943,8 +3959,7 @@ md-progress-circular {
     -webkit-transform: rotate(-109.8deg);
             transform: rotate(-109.8deg); }
   md-progress-circular[value="7"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="8"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3955,8 +3970,7 @@ md-progress-circular {
     -webkit-transform: rotate(-106.2deg);
             transform: rotate(-106.2deg); }
   md-progress-circular[value="8"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="9"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3967,8 +3981,7 @@ md-progress-circular {
     -webkit-transform: rotate(-102.6deg);
             transform: rotate(-102.6deg); }
   md-progress-circular[value="9"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="10"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3979,8 +3992,7 @@ md-progress-circular {
     -webkit-transform: rotate(-99deg);
             transform: rotate(-99deg); }
   md-progress-circular[value="10"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="11"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -3991,8 +4003,7 @@ md-progress-circular {
     -webkit-transform: rotate(-95.4deg);
             transform: rotate(-95.4deg); }
   md-progress-circular[value="11"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="12"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4003,8 +4014,7 @@ md-progress-circular {
     -webkit-transform: rotate(-91.8deg);
             transform: rotate(-91.8deg); }
   md-progress-circular[value="12"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="13"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4015,8 +4025,7 @@ md-progress-circular {
     -webkit-transform: rotate(-88.2deg);
             transform: rotate(-88.2deg); }
   md-progress-circular[value="13"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="14"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4027,8 +4036,7 @@ md-progress-circular {
     -webkit-transform: rotate(-84.6deg);
             transform: rotate(-84.6deg); }
   md-progress-circular[value="14"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="15"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4039,8 +4047,7 @@ md-progress-circular {
     -webkit-transform: rotate(-81deg);
             transform: rotate(-81deg); }
   md-progress-circular[value="15"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="16"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4051,8 +4058,7 @@ md-progress-circular {
     -webkit-transform: rotate(-77.4deg);
             transform: rotate(-77.4deg); }
   md-progress-circular[value="16"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="17"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4063,8 +4069,7 @@ md-progress-circular {
     -webkit-transform: rotate(-73.8deg);
             transform: rotate(-73.8deg); }
   md-progress-circular[value="17"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="18"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4075,8 +4080,7 @@ md-progress-circular {
     -webkit-transform: rotate(-70.2deg);
             transform: rotate(-70.2deg); }
   md-progress-circular[value="18"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="19"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4087,8 +4091,7 @@ md-progress-circular {
     -webkit-transform: rotate(-66.6deg);
             transform: rotate(-66.6deg); }
   md-progress-circular[value="19"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="20"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4099,8 +4102,7 @@ md-progress-circular {
     -webkit-transform: rotate(-63deg);
             transform: rotate(-63deg); }
   md-progress-circular[value="20"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="21"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4111,8 +4113,7 @@ md-progress-circular {
     -webkit-transform: rotate(-59.4deg);
             transform: rotate(-59.4deg); }
   md-progress-circular[value="21"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="22"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4123,8 +4124,7 @@ md-progress-circular {
     -webkit-transform: rotate(-55.8deg);
             transform: rotate(-55.8deg); }
   md-progress-circular[value="22"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="23"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4135,8 +4135,7 @@ md-progress-circular {
     -webkit-transform: rotate(-52.2deg);
             transform: rotate(-52.2deg); }
   md-progress-circular[value="23"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="24"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4147,8 +4146,7 @@ md-progress-circular {
     -webkit-transform: rotate(-48.6deg);
             transform: rotate(-48.6deg); }
   md-progress-circular[value="24"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="25"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4159,8 +4157,7 @@ md-progress-circular {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg); }
   md-progress-circular[value="25"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="26"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4171,8 +4168,7 @@ md-progress-circular {
     -webkit-transform: rotate(-41.4deg);
             transform: rotate(-41.4deg); }
   md-progress-circular[value="26"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="27"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4183,8 +4179,7 @@ md-progress-circular {
     -webkit-transform: rotate(-37.8deg);
             transform: rotate(-37.8deg); }
   md-progress-circular[value="27"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="28"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4195,8 +4190,7 @@ md-progress-circular {
     -webkit-transform: rotate(-34.2deg);
             transform: rotate(-34.2deg); }
   md-progress-circular[value="28"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="29"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4207,8 +4201,7 @@ md-progress-circular {
     -webkit-transform: rotate(-30.6deg);
             transform: rotate(-30.6deg); }
   md-progress-circular[value="29"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="30"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4219,8 +4212,7 @@ md-progress-circular {
     -webkit-transform: rotate(-27deg);
             transform: rotate(-27deg); }
   md-progress-circular[value="30"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="31"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4231,8 +4223,7 @@ md-progress-circular {
     -webkit-transform: rotate(-23.4deg);
             transform: rotate(-23.4deg); }
   md-progress-circular[value="31"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="32"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4243,8 +4234,7 @@ md-progress-circular {
     -webkit-transform: rotate(-19.8deg);
             transform: rotate(-19.8deg); }
   md-progress-circular[value="32"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="33"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4255,8 +4245,7 @@ md-progress-circular {
     -webkit-transform: rotate(-16.2deg);
             transform: rotate(-16.2deg); }
   md-progress-circular[value="33"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="34"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4267,8 +4256,7 @@ md-progress-circular {
     -webkit-transform: rotate(-12.6deg);
             transform: rotate(-12.6deg); }
   md-progress-circular[value="34"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="35"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4279,8 +4267,7 @@ md-progress-circular {
     -webkit-transform: rotate(-9deg);
             transform: rotate(-9deg); }
   md-progress-circular[value="35"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="36"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4291,8 +4278,7 @@ md-progress-circular {
     -webkit-transform: rotate(-5.4deg);
             transform: rotate(-5.4deg); }
   md-progress-circular[value="36"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="37"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4303,8 +4289,7 @@ md-progress-circular {
     -webkit-transform: rotate(-1.8deg);
             transform: rotate(-1.8deg); }
   md-progress-circular[value="37"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="38"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4315,8 +4300,7 @@ md-progress-circular {
     -webkit-transform: rotate(1.8deg);
             transform: rotate(1.8deg); }
   md-progress-circular[value="38"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="39"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4327,8 +4311,7 @@ md-progress-circular {
     -webkit-transform: rotate(5.4deg);
             transform: rotate(5.4deg); }
   md-progress-circular[value="39"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="40"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4339,8 +4322,7 @@ md-progress-circular {
     -webkit-transform: rotate(9deg);
             transform: rotate(9deg); }
   md-progress-circular[value="40"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="41"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4351,8 +4333,7 @@ md-progress-circular {
     -webkit-transform: rotate(12.6deg);
             transform: rotate(12.6deg); }
   md-progress-circular[value="41"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="42"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4363,8 +4344,7 @@ md-progress-circular {
     -webkit-transform: rotate(16.2deg);
             transform: rotate(16.2deg); }
   md-progress-circular[value="42"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="43"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4375,8 +4355,7 @@ md-progress-circular {
     -webkit-transform: rotate(19.8deg);
             transform: rotate(19.8deg); }
   md-progress-circular[value="43"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="44"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4387,8 +4366,7 @@ md-progress-circular {
     -webkit-transform: rotate(23.4deg);
             transform: rotate(23.4deg); }
   md-progress-circular[value="44"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="45"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4399,8 +4377,7 @@ md-progress-circular {
     -webkit-transform: rotate(27deg);
             transform: rotate(27deg); }
   md-progress-circular[value="45"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="46"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4411,8 +4388,7 @@ md-progress-circular {
     -webkit-transform: rotate(30.6deg);
             transform: rotate(30.6deg); }
   md-progress-circular[value="46"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="47"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4423,8 +4399,7 @@ md-progress-circular {
     -webkit-transform: rotate(34.2deg);
             transform: rotate(34.2deg); }
   md-progress-circular[value="47"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="48"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4435,8 +4410,7 @@ md-progress-circular {
     -webkit-transform: rotate(37.8deg);
             transform: rotate(37.8deg); }
   md-progress-circular[value="48"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="49"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4447,8 +4421,7 @@ md-progress-circular {
     -webkit-transform: rotate(41.4deg);
             transform: rotate(41.4deg); }
   md-progress-circular[value="49"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="50"] .md-inner .md-left .md-half-circle {
     -webkit-transform: rotate(135deg);
@@ -4459,8 +4432,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="50"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     border-bottom-color: transparent !important; }
   md-progress-circular[value="51"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4471,8 +4443,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="51"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="52"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4483,8 +4454,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="52"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="53"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4495,8 +4465,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="53"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="54"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4507,8 +4476,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="54"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="55"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4519,8 +4487,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="55"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="56"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4531,8 +4498,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="56"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="57"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4543,8 +4509,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="57"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="58"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4555,8 +4520,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="58"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="59"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4567,8 +4531,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="59"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="60"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4579,8 +4542,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="60"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="61"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4591,8 +4553,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="61"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="62"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4603,8 +4564,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="62"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="63"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4615,8 +4575,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="63"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="64"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4627,8 +4586,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="64"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="65"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4639,8 +4597,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="65"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="66"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4651,8 +4608,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="66"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="67"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4663,8 +4619,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="67"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="68"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4675,8 +4630,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="68"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="69"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4687,8 +4641,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="69"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="70"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4699,8 +4652,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="70"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="71"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4711,8 +4663,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="71"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="72"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4723,8 +4674,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="72"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="73"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4735,8 +4685,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="73"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="74"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4747,8 +4696,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="74"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="75"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4759,8 +4707,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="75"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="76"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4771,8 +4718,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="76"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="77"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4783,8 +4729,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="77"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="78"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4795,8 +4740,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="78"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="79"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4807,8 +4751,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="79"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="80"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4819,8 +4762,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="80"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="81"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4831,8 +4773,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="81"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="82"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4843,8 +4784,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="82"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="83"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4855,8 +4795,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="83"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="84"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4867,8 +4806,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="84"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="85"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4879,8 +4817,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="85"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="86"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4891,8 +4828,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="86"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="87"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4903,8 +4839,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="87"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="88"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4915,8 +4850,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="88"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="89"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4927,8 +4861,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="89"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="90"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4939,8 +4872,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="90"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="91"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4951,8 +4883,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="91"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="92"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4963,8 +4894,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="92"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="93"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4975,8 +4905,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="93"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="94"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4987,8 +4916,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="94"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="95"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -4999,8 +4927,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="95"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="96"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -5011,8 +4938,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="96"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="97"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -5023,8 +4949,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="97"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="98"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -5035,8 +4960,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="98"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="99"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -5047,8 +4971,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="99"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[value="100"] .md-inner .md-left .md-half-circle {
     transition: -webkit-transform 0.1s linear;
@@ -5059,8 +4982,7 @@ md-progress-circular {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg); }
   md-progress-circular[value="100"] .md-inner .md-gap {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
+    border-bottom: 5px solid;
     transition: border-bottom-color 0.1s linear; }
   md-progress-circular[md-mode=indeterminate] .md-spinner-wrapper {
     -webkit-animation: outer-rotate 2.91667s linear infinite;
@@ -5508,7 +5430,7 @@ md-radio-group {
   border: none; }
 
 .md-select-menu-container {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 99;
