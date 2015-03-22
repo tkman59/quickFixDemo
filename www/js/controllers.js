@@ -69,7 +69,7 @@ angular.module('starter.controllers', [])
 
 
             $scope.lang=$translate.use();
-            
+
             $scope.categories = Categories.all();
 
             $scope.subCategorySelected = undefined;

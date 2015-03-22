@@ -120,9 +120,10 @@
 }
 
 /*//fix bug scroll content tab: https://github.com/angular/material/issues/913*/
-.md-tabs {
-    overflow: auto !important;
-}
+/*.md-tabs {*/
+     /*overflow: auto !important;*/
+    /*height: 100%;*/
+ /*}*/
 
 .width-100{
     width: 100%;

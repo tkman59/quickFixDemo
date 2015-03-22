@@ -1,0 +1,24 @@
+# Versions à surveiller
+
+ionic :
+    version file: bower.json
+    repo : https://github.com/driftyco/ionic/releases
+    update: bower install
+
+angular material:
+    version file : www\lib\angular-material\bower.json
+    repo: https://github.com/angular/material/releases
+    update: bower install
+
+
+# Update ionic cli
+
+npm -g update ionic
+
+# Run on browser
+
+ionic serve --lab
+
+# Run on device
+
+ionic run

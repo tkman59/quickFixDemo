@@ -30,6 +30,19 @@ angular.module('starter', ['ionic','ionic.utils', 'starter.services','starter.co
           }, null);
       }
   });
+
+        document.addEventListener("deviceready", function () {
+            $log.info("test 1 -> " +  navigator.globalization);
+            if(typeof navigator.globalization !== "undefined") {
+                navigator.globalization.getPreferredLanguage(function(language) {
+                    $translate.use((language.value).split("-")[0]).then(function(data) {
+                        $log.info("SUCCESS -> " + data);
+                    }, function(error) {
+                        $log.info("ERROR -> " + error);
+                    });
+                }, null);
+            }
+        }, false);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $translateProvider) {
